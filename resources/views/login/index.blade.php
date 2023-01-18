@@ -3,17 +3,32 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-4 p-2">
+
+        @if(session()->has('success') )
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+        
         <main class="form-signin w-100 m-auto">
-  <form>
+  <form action="/login" method="post">
+    @csrf
     <h1 class="h3 mb-3 fw-normal text-center">LOGIN</h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control mb-2" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
+      <input type="email" name="email" class="form-control mb-2 @error('email')is-invalid()  @enderror" id="email" placeholder="name@example.com" autofocus required >
+      <label for="email">Email address</label>
+
+      @error('email')
+      <div class="invalid-feedback">
+        {{ $message }}
+      </div>
+      @enderror
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control mb-2" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password</label>
+      <input type="password" name="password" class="form-control mb-2" id="password" placeholder="Password" required>
+      <label for="password">Password</label>
     </div>
 
 

@@ -18,7 +18,7 @@
     </div>
 
     <div class="form-floating">
-      <input type="email" class="form-control @error('email')is-invalid @enderror " name=email" id="floatingInput" placeholder="name@example.com" required value="{{ old('email') }}">
+      <input type="email" class="form-control @error('email')is-invalid @enderror " name="email" id="floatingInput" placeholder="name@example.com" required value="{{ old('email') }}">
       <label for="floatingInput">Email</label>
       @error('email')
       <div class="invalid-feedback">
@@ -41,15 +41,10 @@
     <div class="form-floating">
       <input type="password" class="form-control @error('pass')is-invalid @enderror" name="password" id="floatingPassword" placeholder="Password" required>
       <label for="floatingPassword">Password</label>
-      @error('password')
-      <div class="invalid-feedback">
-        {{ $message }}
-      </div>
-      @enderror
     </div>
 
     <div class="form-floating">
-      <input type="password" class="form-control mb-2 rounded-bottom @error('password')is-invalid @enderror" name="password" id="floatingPassword" placeholder="Password"  required>
+      <input type="password" class="form-control mb-2 rounded-bottom @error('password')is-invalid @enderror" name="password_confirmation" id="floatingPassword" placeholder="Password"  required>
       <label for="floatingPassword">Konfirmasi Password</label>
       @error('password')
       <div class="invalid-feedback">

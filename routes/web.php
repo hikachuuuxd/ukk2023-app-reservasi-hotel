@@ -25,5 +25,6 @@ Route::get('/room', [RoomController::class, 'show']);
 Route::get('/order', [OrderController::class, 'show']);
 Route::get('/user', [OrderController::class, 'showUser']);
 Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store']);

@@ -18,7 +18,7 @@
         </ul>
         <ul class="navbar-nav mt-2 ms-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/login" ><i class="bi bi-box-arrow-in-right"></i> Home</a>
+          <a class="nav-link active" aria-current="page" href="/login" ><i class="bi bi-box-arrow-in-right"></i> LOGIN</a>
         </li>
       </ul>
       </div>

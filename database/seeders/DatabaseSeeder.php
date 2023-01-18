@@ -18,13 +18,13 @@ class DatabaseSeeder extends Seeder
         \App\Models\Fasility::factory(10)->create();
         \App\Models\FasilityRoom::factory(10)->create();
         \App\Models\Order::factory(5)->create();
-        // \App\Models\User::factory(5)->create();
+         \App\Models\User::factory(5)->create();
         \App\Models\Transaction::factory(5)->create();
 
-        // \App\Models\User::factory()->create([
-        //      'name' => 'Test User',
-        //     'email' => 'test@example.com',
+        \App\Models\User::factory()->create([
+             'name' => 'Test User',
+            'email' => 'test@example.com',
           
-        // ]);
+        ]);
     }
 }
