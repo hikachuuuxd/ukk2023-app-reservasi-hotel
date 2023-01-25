@@ -5,6 +5,7 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardRoomController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,3 +38,5 @@ Route::get('/dashboard', function(){
         'title' => 'dashboard'
     ]);
 })->middleware('auth');
+
+Route::resource('/dashboard/rooms', DashboardRoomController::class)->middleware('auth');

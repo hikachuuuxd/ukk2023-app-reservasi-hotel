@@ -22,6 +22,7 @@ class RoomFactory extends Factory
             'name' => $this->faker->sentence(mt_rand(2, 4)),
             'description' => $this->faker->paragraph(mt_rand(5, 8)),
             'price' => $this->faker->numberBetween($min = 150, $max = 647),
+            'total' => $this->faker->randomDigitNotNull(),
             'image' => 'deluxe.jpg'
         ];
     }

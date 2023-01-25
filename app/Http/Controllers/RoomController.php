@@ -14,4 +14,8 @@ class RoomController extends Controller
             
         ]);
     }
+
+    public function getRouteKeyName(){
+        return 'slug';
+    }
 }
