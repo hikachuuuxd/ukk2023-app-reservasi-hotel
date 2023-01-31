@@ -14,13 +14,14 @@ class RoomController extends Controller
         ]);
     }
     public function show(Room $room){
-        return view('room', [
+        return view('kamar', [
             "title" => " kamar",
             "room"=> $room 
            
         ]);
     }
 
+  
     public function getRouteKeyName(){
         return 'slug';
     }

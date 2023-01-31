@@ -47,7 +47,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link {{ Request::is('rooms')? 'active' : '' }}" href="/rooms">Kamar</a>
+                <a class="nav-link {{ Request::is('room')? 'active' : '' }}" href="/room">Kamar</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/fasilitas">Fasilitas</a>

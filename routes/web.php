@@ -22,7 +22,7 @@ Route::get('/', function () {
         'title' => 'Home'
     ]);
 });
-Route::get('/rooms', [RoomController::class, 'index'])->middleware('auth');
+Route::get('/room', [RoomController::class, 'index'])->middleware('auth');
 Route::get('/room/{room:slug}', [RoomController::class, 'show'])->middleware('auth');
 Route::get('/order', [OrderController::class, 'show'])->middleware('auth');
 Route::get('/user', [OrderController::class, 'showUser'])->middleware('auth');
