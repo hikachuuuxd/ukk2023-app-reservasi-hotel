@@ -6,12 +6,18 @@ use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
-    public function show(){
+
+    public function index(){
+        return view('rooms', [
+            'title' => 'kamar', 
+            'rooms' => Room::latest()->get()
+        ]);
+    }
+    public function show(Room $room){
         return view('room', [
             "title" => " kamar",
-            "rooms"=> Room::latest()->get()
+            "room"=> $room 
            
-            
         ]);
     }
 
