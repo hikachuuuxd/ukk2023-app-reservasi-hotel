@@ -39,4 +39,6 @@ Route::get('/dashboard', function(){
     ]);
 })->middleware('auth');
 
-Route::resource('/dashboard/rooms', DashboardRoomController::class)->middleware('auth');
+Route::get('/dashboard/rooms/checkSlug', [DashboardRoomController::class, 'checkSlug'])->middleware('admin');
+Route::resource('/dashboard/rooms', DashboardRoomController::class)->except('show')->middleware('admin');
+

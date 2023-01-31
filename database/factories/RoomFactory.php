@@ -20,6 +20,7 @@ class RoomFactory extends Factory
         
         return [
             'name' => $this->faker->sentence(mt_rand(2, 4)),
+            'slug' => $this->faker->slug(),
             'description' => $this->faker->paragraph(mt_rand(5, 8)),
             'price' => $this->faker->numberBetween($min = 150, $max = 647),
             'total' => $this->faker->randomDigitNotNull(),

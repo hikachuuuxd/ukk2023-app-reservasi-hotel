@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Room;
+use App\Models\Fasility;
+use App\Models\FasilityRoom;
 use Illuminate\Http\Request;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardRoomController extends Controller
 {
@@ -14,6 +17,8 @@ class DashboardRoomController extends Controller
      */
     public function index()
     {
+   
+        
         return view('dashboard.rooms.index', [
             'rooms' => Room::all()
             
@@ -27,7 +32,9 @@ class DashboardRoomController extends Controller
      */
     public function create()
     {
-        //
+
+        $fasilities = Fasility::all();
+        return view('dashboard.rooms.create', compact('fasilities'));
     }
 
     /**
@@ -38,7 +45,21 @@ class DashboardRoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'name' => 'required|max:100',
+            'slug' => 'required|unique:rooms',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'total'=> 'required|numeric',
+            'image' => 'required'
+        ]);
+
+        // Room::create($validateData);
+        $validateData = Room::create($request->all());
+        $validateData->fasilities()->attach($request->input('fasility_id'));
+        return redirect('/dashboard/rooms')->with('success', 'New Room has been added!');
+
+        
     }
 
     /**
@@ -60,7 +81,11 @@ class DashboardRoomController extends Controller
      */
     public function edit(Room $room)
     {
-        //
+        
+        $fasilities = Fasility::all();
+        return view('dashboard.rooms.edit', compact('fasilities', 'room'),[
+            
+        ]);
     }
 
     /**
@@ -72,7 +97,35 @@ class DashboardRoomController extends Controller
      */
     public function update(Request $request, Room $room)
     {
-        //
+
+         $room = Room::find($room->id);
+        
+
+        $rules = [
+            'name' => 'required|max:100',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'total'=> 'required|numeric',
+            'image' => 'required'
+        ];
+
+        if($request->slug != $room->slug ){
+            $rules['slug'] = 'required|unique:rooms';
+        }
+        $validateData = $request->validate($rules);
+        Room::where('id', $room->id)->update($validateData);
+        // $room->fasilities()->updateExistingPivot('fasility_id', [
+        //     'name' => $request->name,
+        //     'slug' => $request->slug,
+        //     'description' => $request->description,
+        //     'price' => $request->price,
+        //     'total'=> $request->total,
+        //     'image' => $request->image
+        // ]);
+       
+
+        $room->fasilities()->sync($request->input('fasility_id'));
+        return redirect('/dashboard/rooms')->with('success', 'New Room has been update!');
     }
 
     /**
@@ -83,6 +136,17 @@ class DashboardRoomController extends Controller
      */
     public function destroy(Room $room)
     {
-        //
+         Room::destroy($room->id);
+        $room->fasilities()->detach('fasility_id');
+        return redirect('/dashboard/rooms')->with('success', 'Data Berhasil di Hapus!');
     }
+
+    public function checkSlug(Request $request){
+        
+
+        $slug = SlugService::createSlug(Room::class, 'slug', $request->name);
+        return response()->json(['slug' => $slug ]);
+    }
+
+ 
 }

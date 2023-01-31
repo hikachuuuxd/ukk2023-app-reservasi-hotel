@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
     <div class="container">
       <a class="navbar-brand mt-2" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,11 +24,19 @@
         @auth
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Welcome {{ auth()->user()->name }}
+            @if(auth()->user()->role === 1)
+              {{ "admin" }}
+            @elseif(auth()->user()->role === 2)
+              {{ "petugas" }}
+            @else
+              Welcome {{ auth()->user()->name }}
+            @endif
+            
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
+          @can('admin') <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li> 
             <li><hr class="dropdown-divider"></li>
+            @endcan
             <li>
             <form action="/logout" method="post">
               @csrf

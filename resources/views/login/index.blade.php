@@ -24,7 +24,7 @@
     <h1 class="h3 mb-3 fw-normal text-center">LOGIN</h1>
 
     <div class="form-floating">
-      <input type="email" name="email" class="form-control mb-2 @error('email')is-invalid()  @enderror" id="email" placeholder="name@example.com" autofocus required >
+      <input type="email" name="email" class="form-control mb-2 @error('email')is-invalid  @enderror" id="email" placeholder="name@example.com" autofocus required >
       <label for="email">Email address</label>
 
       @error('email')

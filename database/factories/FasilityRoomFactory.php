@@ -14,8 +14,12 @@ class FasilityRoomFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+    protected $fillable = ['room_id, fasility_id'];
     public function definition()
     {
+
+        
    
         return [
             'room_id' => mt_rand(1, 5),
