@@ -10,7 +10,7 @@ class Room extends Model
 {
     use HasFactory, Sluggable;
     protected $guarded = ['id'];
-    protected $with = ['fasilities'];
+    
 
     public function fasilities(){
 
@@ -24,6 +24,7 @@ class Room extends Model
             ]
         ];
     }
-
     
+
+   
 }

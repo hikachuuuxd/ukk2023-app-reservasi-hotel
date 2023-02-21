@@ -21,7 +21,63 @@
    margin-bottom: -1px;
   }
   
-  /* .dropdown-menu a:hover{
-    background-color: red;
-    color: black;
-  } */
+.dashboard-partikels{
+  width: 300px;
+  height: 150px;
+
+}
+
+
+a .riwayat-order {
+  background-color: rgb(46, 68, 105);
+  color: white;
+  text-decoration: none;
+}
+
+a .riwayat-order:hover{
+  color:  rgb(46, 68, 105);
+  text-decoration: none;
+  background-color: white;
+}
+
+.navbar, .dropdown-menu{
+  background-color: rgb(46, 68, 105);
+}
+
+a .cari-kamar{
+  background-color: rgb(46, 68, 105);
+  color: white;
+  
+}
+a .cari-kamar:hover{
+  background-color: rgb(255, 166, 52);
+  color: rgb(37, 37, 37);
+  
+}
+
+a .button-me{
+  background-color: rgb(46, 68, 105) ;
+  color: white;
+}
+
+a .button-me:hover{
+  background-color: rgb(255, 166, 52);
+  color: rgb(37, 37, 37);
+}
+
+.bluedark{
+  background-color: rgb(46, 68, 105) ;
+}
+
+.orange{
+  background-color: rgb(255, 166, 52);
+}
+
+.dark{
+  background-color:  rgb(37, 37, 37) ;
+}
+
+.purple{
+  background-color:   rgb(74, 79, 170) ;
+}
+

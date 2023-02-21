@@ -3,28 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\Room;
-use App\Models\User;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class DashboardOrderStatusController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Order $order)
+    public function index()
     {
-        $order = Order::all();
-        
-        return view('rooms.orders.index', [
-            
-            'title' => 'Orders',
-            'orders' => $order
-        ]);
+        //
     }
 
     /**
@@ -34,8 +24,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-       
-        
+        //
     }
 
     /**
@@ -46,25 +35,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-     $request->validate([
-            'Checkin' => 'required',
-            'Checkout' => 'required',
-            'totalRoom' => 'required',
-            
-        ]);
-        $room = Room::find('room_id');
-        $order = new Order;
-       
-        $order->Checkin = $request->Checkin;
-        $order->Checkout = $request->Checkout;
-        $order->totalRoom = $request->totalRoom;
-        $order->room_id = $request->room_id;
-        $order->user_id = auth()->user()->id;
-
-        
-     
-        $order->save();
-        return redirect('/orders/'.$order->id)->with('success', 'New Room has been added!');
+        //
     }
 
     /**
@@ -75,22 +46,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-    
-
-       Order::findOrFail($order->id);
-      if( auth()->user()->name !== $order->user->name){
-        abort(403);
-    }
-    
-      
-        return view('rooms.orders.show',[
-            'order' => $order,
-          
-            'title' => 'Order'
-            
-        ] );
-
-    
+        //
     }
 
     /**
@@ -113,7 +69,9 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $order->status = $request->status;
+        $order->save();
+        return back();
     }
 
     /**
@@ -126,16 +84,4 @@ class OrderController extends Controller
     {
         //
     }
-
-    public function cetak(Order $order){
-        $order = Order::findOrFail($order->id);
-        return view('rooms.orders.cetak',[
-            'title' => 'Cetak',
-            'order' => $order
-        ]);
-
-   }
-
-
-     
 }

@@ -6,6 +6,14 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardRoomController;
+use App\Http\Controllers\DashboardFasilityController;
+use App\Http\Controllers\DashboardOrderController;
+use App\Http\Controllers\DashboardOrderStatusController;
+use App\Http\Controllers\DashboardHotelController;
+use App\Http\Controllers\CetakController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,10 +30,15 @@ Route::get('/', function () {
         'title' => 'Home'
     ]);
 });
-Route::get('/room', [RoomController::class, 'index'])->middleware('auth');
-Route::get('/room/{room:slug}', [RoomController::class, 'show'])->middleware('auth');
-Route::get('/order', [OrderController::class, 'show'])->middleware('auth');
-Route::get('/user', [OrderController::class, 'showUser'])->middleware('auth');
+Route::get('/rooms', [RoomController::class, 'index'])->middleware('auth');
+Route::get('/rooms/{room:slug}', [RoomController::class, 'show'])->middleware('auth');
+Route::resource('/orders', OrderController::class)->middleware('auth');
+Route::get('/orders/cetak/{order}', [OrderController::class, 'cetak'])->middleware('auth');
+Route::resource('dashboard/orders', DashboardOrderController::class)->except('show')->middleware('reservasi', 'admin');
+Route::resource('dashboard/order', DashboardOrderStatusController::class)->only(['update'])->middleware('admin');
+Route::resource('dashboard/hotels', DashboardHotelController::class)->middleware('admin');
+Route::get('/cetak/{order}', [CetakController::class, 'cetak']);
+
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -38,8 +51,12 @@ Route::get('/dashboard', function(){
     return view('dashboard.index',[
         'title' => 'dashboard'
     ]);
-})->middleware('auth');
+})->middleware('reservasi', 'admin');
 
 Route::get('/dashboard/rooms/checkSlug', [DashboardRoomController::class, 'checkSlug'])->middleware('admin');
 Route::resource('/dashboard/rooms', DashboardRoomController::class)->except('show')->middleware('admin');
+Route::get('/dashboard/fasilities/checkSlug', [DashboardFasilityController::class, 'checkSlug'])->middleware('admin');
+Route::resource('/dashboard/fasilities', DashboardFasilityController::class)->except('show')->middleware('admin');
+Route::resource('/dashboard/users', UserController::class)->except('show')->middleware('admin');
+
 

@@ -1,6 +1,6 @@
 <!-- Button trigger modal -->
-<a type="button" class="badge bg-info" data-bs-toggle="modal" data-bs-target="#view{{$room->id}}">
-<span data-feather="eye" >
+<a type="button" class="" data-bs-toggle="modal" data-bs-target="#view{{$room->id}}">
+<button class="btn darkblue">view</button>
 </a>
 
 <!-- Modal -->

@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 ">
         <h1 class="h2">Rooms</h1>   </div>
 
         @if(session()->has('success') )
@@ -18,8 +18,8 @@
               <th scope="col">#</th>
               <th scope="col">Name</th>
               <th scope="col">Jumlah Kamar</th>
-              <th scope="col">Status</th>
-              <th scope="col">Action</th>
+              <th scope="col" colspan="2">Status</th>
+             
   
             </tr>
           </thead>
@@ -41,14 +41,26 @@
             
             </td>
               <td>
-                 @include('dashboard.rooms.show')
-                  <a href="/dashboard/rooms/{{$room->id}}/edit" class="badge bg-warning"><span data-feather="edit" ></span></a>
 
-                  <form action="/dashboard/rooms/{{ $room->id }}" method="post" class="d-inline">
-                    @method('delete')
-                    @csrf
-                    <button class="badge bg-danger border-0" onclick="return confirm('yakin?')"><span data-feather="x-circle" ></span></button>
-                  </form>
+                 <div class="dropdown">
+                 <a href="/rooms/{{ $room->slug }}" type="button" class ="text-reset"  > <button class="btn btn-dark btn-sm rounded-0"><small>view</small></button></a>
+                   
+                    
+                  <i class="bi bi-three-dots-vertical" class=" dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"">  </i>
+                  
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/dashboard/rooms/{{$room->id}}/edit">Edit</a></li>
+                      <li>                  
+                        <form action="/dashboard/rooms/{{ $room->id }}" method="post" class="d-inline">
+                        @method('delete')
+                        @csrf
+                        <button class="dropdown-item" onclick="return confirm('yakin?')">Delete</button>
+                      </form>
+
+                      </li>
+                    </ul>
+                  </div>
+            
               
               </td>
             </tr>

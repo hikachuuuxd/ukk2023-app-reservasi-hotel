@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use App\Models\Room;
 use App\Models\Fasility;
 use App\Models\FasilityRoom;
@@ -45,18 +45,27 @@ class DashboardRoomController extends Controller
      */
     public function store(Request $request)
     {
-        $validateData = $request->validate([
+    
+       $request->validate([
             'name' => 'required|max:100',
             'slug' => 'required|unique:rooms',
             'description' => 'required',
             'price' => 'required|numeric',
             'total'=> 'required|numeric',
-            'image' => 'required'
+            'image' => 'image|file|max:1024'
         ]);
+        
+        $room = new Room;
+        $room->name = $request->name;
+        $room->slug = $request->slug;
+        $room->description = $request->description;
+        $room->price = $request->price;
+        $room->total = $request->total;
+        $room->image = $request->file('image')->store('room-image');
 
-        // Room::create($validateData);
-        $validateData = Room::create($request->all());
-        $validateData->fasilities()->attach($request->input('fasility_id'));
+  
+        $room->save();
+        $room->fasilities()->attach($request->input('fasility_id'));
         return redirect('/dashboard/rooms')->with('success', 'New Room has been added!');
 
         
@@ -136,6 +145,10 @@ class DashboardRoomController extends Controller
      */
     public function destroy(Room $room)
     {
+
+        if($room->image){
+            Storage::delete($room->image);
+        }
          Room::destroy($room->id);
         $room->fasilities()->detach('fasility_id');
         return redirect('/dashboard/rooms')->with('success', 'Data Berhasil di Hapus!');
