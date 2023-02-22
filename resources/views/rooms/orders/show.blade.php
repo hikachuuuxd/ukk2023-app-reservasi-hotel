@@ -78,8 +78,26 @@
                </div>
                 </div>
         </div>
-        <div class="row">
-                
+        <div class="row  mt-3">
+                <div class="col ">
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example rounded-0">
+                                <a href="/orders/cetak/{{ $order->id }}" target="_blank"><button type="button" class="btn btn-primary rounded-0 bi bi-printer"> Print</button></a>
+                              @include('rooms.orders.edit')
+
+                           
+                        <button type="button" class="btn btn-danger rounded-0 bi bi-x-circle" onclick="return confirm('yakin?')"> 
+                                
+                                <form action="/orders/{{ $order->id }}" method="post" class="d-inline">
+                                        @method('delete')
+                                        @csrf
+                                Batalkan
+                        </form>
+                        </button>
+                              
+
+                                
+                        </div>
+                </div>
         </div>
 </div>
 

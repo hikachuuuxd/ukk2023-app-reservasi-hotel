@@ -110,15 +110,5 @@
   </div>
 
 </div>
-<!-- <script>
-      function harga(){
-          var totalRoom = document.getElementById('totalRoom').value;
-          var price = document.getElementById('price').value;
-          var total = parseInt(totalRoom) * parseInt(price);
-            document.getElementById('totalPrice').value = total;
 
-      }
-
-      
-  </script> -->
 @endsection

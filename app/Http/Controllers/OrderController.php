@@ -18,6 +18,7 @@ class OrderController extends Controller
      */
     public function index(Order $order)
     {
+        
         $order = Order::all();
         
         return view('rooms.orders.index', [
@@ -64,7 +65,7 @@ class OrderController extends Controller
         
      
         $order->save();
-        return redirect('/orders/'.$order->id)->with('success', 'New Room has been added!');
+        return redirect('/orders/'.$order->id)->with('success', 'Pesanan berhasil di tambahkan');
     }
 
     /**
@@ -75,8 +76,9 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-    
-
+        
+        
+        
        Order::findOrFail($order->id);
       if( auth()->user()->name !== $order->user->name){
         abort(403);
@@ -113,7 +115,23 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $request->validate([
+            'Checkin' => 'required',
+            'Checkout' => 'required',
+            'totalRoom' => 'required',
+            
+        ]);
+        $room = Room::find('room_id');
+        $order = Order::find($order->id);
+        $order->Checkin = $request->Checkin;
+        $order->Checkout = $request->Checkout;
+        $order->totalRoom = $request->totalRoom;
+        $order->user_id = auth()->user()->id;
+
+        
+     
+        $order->save();
+        return back()->with('success', 'Pemesanan Berhasil di Update');
     }
 
     /**
@@ -124,7 +142,8 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        Order::destroy($order->id);
+        return redirect('/orders')->with('success', 'Data Berhasil di Hapus!');
     }
 
     public function cetak(Order $order){

@@ -63,21 +63,3 @@
       </div>
     </div>
   </nav>
-    <!-- <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/login" ><i class="bi bi-box-arrow-in-right"></i> LOGIN</a>
-                </li> -->
-
-        <!-- <ul class="navbar-nav">
-        
-   
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            
-            
-          </a>
-          <ul class="dropdown-menu bg-dark">
-          
-          </ul>
-        </li>
-     
-      </ul> -->
