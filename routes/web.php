@@ -11,6 +11,7 @@ use App\Http\Controllers\DashboardOrderController;
 use App\Http\Controllers\DashboardOrderStatusController;
 use App\Http\Controllers\DashboardHotelController;
 use App\Http\Controllers\CetakController;
+use App\Http\Controllers\UserController;
 
 
 

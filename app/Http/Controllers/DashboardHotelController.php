@@ -69,7 +69,9 @@ class DashboardHotelController extends Controller
      */
     public function edit(Hotel $hotel)
     {
-        //
+        return view('dashboard.hotels.edit',[
+            'hotel' => $hotel
+        ]);
     }
 
     /**
@@ -81,7 +83,21 @@ class DashboardHotelController extends Controller
      */
     public function update(Request $request, Hotel $hotel)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:100',
+            'image' => 'image|file|max:1024'
+        ]);
+        $hotel = Hotel::find($hotel->id);
+        $hotel->name = $request->name;
+        if($request->file('image')){
+            if($request->oldImage){
+                Storage::delete($hotel->image);
+            }
+        }
+        $hotel->image = $request->file('image')->store('hotel-image');
+        
+         $hotel->save();
+         return redirect('dashboard/hotels')->with('success', 'Fasilitas Hotels Baru Berhasil Di edit!');
     }
 
     /**

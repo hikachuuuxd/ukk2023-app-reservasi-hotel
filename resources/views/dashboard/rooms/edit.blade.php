@@ -5,7 +5,7 @@
         <h1 class="h2">Edit Rooms</h1>   </div>
 
         <div class="col-md-6">
-        <form action="/dashboard/rooms/{{ $room->id}}" method="post">
+        <form action="/dashboard/rooms/{{ $room->id}}" method="post" enctype="multipart/form-data">
         @method('put')
         @csrf
             <div class="mb-3">
@@ -51,10 +51,16 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="image" class="form-label">Image</label>
-                <input type="text" class="form-control " id="image" name="image" value="{{old('image', $room->image)}}">
-
-            </div>
+                <label for="image" class="form-label"> Gambar</label>
+                <input type="hidden" name="oldImage" value="{{ $room->image }}">
+                <img class="img-preview img-fluid mb-3 col-sm-5">
+                <input class="form-control @error('image')is-invalid @enderror" type="file" id="image" name="image" accept="image/*" onchange="previewImage()">
+            @error('image')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
             <div class="mb-3">
                 <label for="fasility" class="form-label">Fasilitas</label>
 

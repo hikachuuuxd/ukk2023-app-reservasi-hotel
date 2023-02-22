@@ -107,31 +107,33 @@ class DashboardRoomController extends Controller
     public function update(Request $request, Room $room)
     {
 
-         $room = Room::find($room->id);
+    
         
-
-        $rules = [
+         $request->validate([
             'name' => 'required|max:100',
             'description' => 'required',
             'price' => 'required|numeric',
             'total'=> 'required|numeric',
-            'image' => 'required'
-        ];
+            'image' => 'image|file|max:1024'
+        ]);
+        
+        $room = Room::find($room->id);
+        $room->name = $request->name;
+       
 
         if($request->slug != $room->slug ){
             $rules['slug'] = 'required|unique:rooms';
         }
-        $validateData = $request->validate($rules);
-        Room::where('id', $room->id)->update($validateData);
-        // $room->fasilities()->updateExistingPivot('fasility_id', [
-        //     'name' => $request->name,
-        //     'slug' => $request->slug,
-        //     'description' => $request->description,
-        //     'price' => $request->price,
-        //     'total'=> $request->total,
-        //     'image' => $request->image
-        // ]);
-       
+        $room->description = $request->description;
+        $room->price = $request->price;
+        $room->total = $request->total;
+        if($request->file('image')){
+            if($request->oldImage){
+                Storage::delete($room->image);
+            }
+        }
+        $room->image = $request->file('image')->store('room-image');
+        $room->save();
 
         $room->fasilities()->sync($request->input('fasility_id'));
         return redirect('/dashboard/rooms')->with('success', 'New Room has been update!');

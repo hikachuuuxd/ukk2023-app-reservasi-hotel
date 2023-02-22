@@ -37,7 +37,7 @@
                   <i class="bi bi-three-dots" class=" dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"">  </i>
                   
                     <ul class="dropdown-menu">
-        
+                      <li><a class="dropdown-item" href="/dashboard/hotels/{{$hotel->id}}/edit">Edit</a></li>
                       <li>                  
                       <form action="/dashboard/hotels/{{ $hotel->id }}" method="post" class="d-inline">
                       @method('delete')
