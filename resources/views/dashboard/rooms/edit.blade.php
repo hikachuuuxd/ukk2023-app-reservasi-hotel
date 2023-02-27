@@ -54,7 +54,7 @@
                 <label for="image" class="form-label"> Gambar</label>
                 <input type="hidden" name="oldImage" value="{{ $room->image }}">
                 <img class="img-preview img-fluid mb-3 col-sm-5">
-                <input class="form-control @error('image')is-invalid @enderror" type="file" id="image" name="image" accept="image/*" onchange="previewImage()">
+                <input class="form-control @error('image')is-invalid @enderror" type="file" id="image" name="image" accept="image/*" onchange="previewImage()" value="{{ $room->image }} ">
             @error('image')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -75,9 +75,9 @@
                 </div>
         
             </div>
-            <div class="mb-3">
-                <label for="description" class="form-label ">Deskripsi</label>
-                <input type="text" class="form-control @error('description')is-invalid @enderror" id="description" name= "description" value="{{ old('description', $room->description)}}">
+            <div class="form-floating mb-3">
+                <input class="form-control @error('description')is-invalid @enderror" id="description" name= "description"  placeholder="Deskripsi" id="deskripsi" style="height: 100px" value="{{ old('description', $room->description) }}">
+                <label for="deskripsi">Deskripsi</label>
 
                 @error('description')
                     <div class="invalid-feedback">
@@ -86,16 +86,7 @@
                 @enderror
                
             </div>
-            <!-- <div class="mb-3">
-                <label for="description" class="form-label">Deskripsi</label>
-                @error('description')
-                   <p class="text-danger">
-                   {{ $message }}
-                   </p>
-                @enderror
-                <input type="hidden" class="form-control" id="description" name="description"  value="{{ old('description') }}">
-                <trix-editor input="description "></trix-editor>
-            </div> -->
+
 
             <button type="submit" class="btn btn-dark mt-4">Submit</button>
         </form>

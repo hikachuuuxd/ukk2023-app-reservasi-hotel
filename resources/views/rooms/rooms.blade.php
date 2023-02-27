@@ -13,18 +13,16 @@
         </div>
   </div>
 
-  <div class="row justify-content-center ">
+  <div class="row justify-content-start">
   @foreach($rooms as $room)
     <div class="col-md-4 mb-5  ">
 
       
       <div class="card rounded-0   " style="width: 50;">
       <a href="/rooms/{{ $room->slug }}" class ="text-decoration-none">
-        @if ($room->image)
-        <img src="{{ asset('storage/'. $room->image) }}" class="card-img-top rounded-0" alt="...">
-        @else
-        <img src="https://api.unsplash.com/photos" class="card-img-top rounded-0" alt="...">
-        @endif
+    
+        <img src="{{ asset('storage/'. $room->image) }}" class="card-img-top rounded-0" style="height:250px"alt="...">
+        
       <div class="card-body text-dark  shadow">
         <p class="card-text text-center">{{$room->name}}</p>
       </div></a>
@@ -37,3 +35,4 @@
 
 </div>
 @endsection 
+

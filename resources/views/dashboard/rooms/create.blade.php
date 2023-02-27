@@ -72,9 +72,9 @@
                 </div>
         
             </div>
-            <div class="mb-3">
-                <label for="description" class="form-label ">Deskripsi</label>
-                <input type="text" class="form-control @error('description')is-invalid @enderror" id="description" name= "description" value="{{ old('description') }}">
+            <div class="form-floating mb-3">
+                <textarea class="form-control @error('description')is-invalid @enderror" id="description" name= "description" value="{{ old('description') }}" placeholder="Deskripsi" id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Deskripsi</label>
 
                 @error('description')
                     <div class="invalid-feedback">

@@ -11,7 +11,7 @@
       </div>
       <div class="carousel-caption d-none d-md-block ">
       <h6 class="fw-semibold" style="word-spacing: 3px; font-family:   Trebuchet MS ; letter-spacing:1px"> Selamat Datang di Hotel Hebat! </h6>
-        <a href="/rooms" class="text-decoration-none"><button class="cari-kamar btn w-50 rounded-0 mb-3 shadow" style="">CARI KAMAR</button></a>
+        <a href="/rooms" class="text-decoration-none"><button class="cari-kamar btn w-25  mb-3 shadow" style="">CARI KAMAR</button></a>
       </div>
     </div>
   </div>

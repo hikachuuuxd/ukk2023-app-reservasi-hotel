@@ -90,7 +90,15 @@
                                 <form action="/orders/{{ $order->id }}" method="post" class="d-inline">
                                         @method('delete')
                                         @csrf
-                                        <button class="btn btn-danger rounded-0 bi bi-x-circle" onclick="return confirm('yakin?')"> Batalkan</button>
+                                        
+                                        @if($order->status === 2)
+                                        <button class="btn btn-danger rounded-0 bi bi-x-circle" onclick="return confirm('yakin?')"> Hapus </button>
+                                        @elseif($order->status === 1)
+                                        <button type="disable" class="btn btn-secondary rounded-0 bi bi-x-circle" onclick="return confirm('yakin?')"> Batalkan </button>
+                                        @else
+                                        <button class="btn btn-danger rounded-0 bi bi-x-circle" onclick="return confirm('yakin?')"> Batalkan </button>
+                                        @endif
+                                  
                                 </form>
                                 </div>
                                                 

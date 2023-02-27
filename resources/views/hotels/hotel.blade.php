@@ -11,7 +11,7 @@
             @foreach($hotels as $hotel)   
             <div class="col mb-5">
                 <div class="card" style="width: 18rem;">
-                    <img src="{{ asset('storage/' .$hotel->image) }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('storage/' .$hotel->image) }}" class="card-img-top" style=" height: 250px" alt="...">
                     <div class="card-body">
                       <p class="card-text text-center">{{ $hotel->name }}</p>
                     </div>

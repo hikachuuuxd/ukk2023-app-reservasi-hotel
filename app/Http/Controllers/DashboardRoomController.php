@@ -131,9 +131,10 @@ class DashboardRoomController extends Controller
             if($request->oldImage){
                 Storage::delete($room->image);
             }
-        }
         $room->image = $request->file('image')->store('room-image');
-        $room->save();
+        }
+       
+        $room->update();
 
         $room->fasilities()->sync($request->input('fasility_id'));
         return redirect('/dashboard/rooms')->with('success', 'New Room has been update!');

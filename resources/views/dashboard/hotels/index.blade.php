@@ -11,13 +11,13 @@
         </div>
         @endif
 
-        <div class="table-responsive">
-        <table class="table table-striped table-sm">
+        <div class="table-responsive ">
+        <table class="table table-striped table-sm ">
           <thead>
             <tr>
               <th scope="col">#</th>
               <th scope="col" >Name</th>
-              <th scope="col" colspan="2">Image</th>
+              <th scope="col" colspan="2"  >Image</th>
   
             </tr>
           </thead>
@@ -26,15 +26,15 @@
         @foreach($hotels as $hotel)
             <tr>
               <td>{{$loop->iteration}}</td>
-              <td>{{ $hotel->name }}</td>
-              <td><img src="{{ asset('storage/' .$hotel->image) }} " alt="" class="img-fluid col-md-2"></td>
+              <td class="w-50">{{ $hotel->name }}</td>
+              <td class=""><img src="{{ asset('storage/' .$hotel->image) }} " alt="" class="img-fluid " style="width: 100px; height: 100px"> </td>
               <td>
                 
                
 
                  <div class="dropdown">
 
-                  <i class="bi bi-three-dots" class=" dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"">  </i>
+                  <i class="bi bi-three-dots" class=" dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">  </i>
                   
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="/dashboard/hotels/{{$hotel->id}}/edit">Edit</a></li>

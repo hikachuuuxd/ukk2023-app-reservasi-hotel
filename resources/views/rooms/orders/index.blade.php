@@ -19,7 +19,7 @@
         <div class="col mb-4 text-center ">
 
                 <div class="card  overflow-hidden rounded-0 ">
-                        <img src="img/{{ $order->room->image }}" class="card-img-top rounded-0" alt="">
+                        <img src="{{ asset('storage/' .$order->room->image) }}" class="card-img-top rounded-0" alt="">
                 <div class="card-body border-0">
                         <h6 class="card-title">{{ $order->room->name }}</h6>
                        <small class="card-text">{{ $order->Checkin }}-{{$order->Checkout}}</small>

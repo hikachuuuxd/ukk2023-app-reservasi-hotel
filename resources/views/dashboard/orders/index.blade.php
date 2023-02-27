@@ -42,9 +42,7 @@
               <th scope="col">Check-in</th>
               <th scope="col">Check-out</th>
               <th scope="col">Total</th>
-              <th scope="col">Status</th>
-
-              <th scope="col" colspan="2">Konfirmasi</th>
+              <th scope="col" colspan="2">Status</th>
 
   
             </tr>
@@ -74,13 +72,7 @@
                   Rp. {{ day( $order->Checkin, $order->Checkout, $order->room->price, $order->totalRoom) }}
               </td>
 
-              <td>
-                @if($order->status === 0)        
-                    {{  'pending'}}
-                @else
-                    {{ 'terkonfirmasi' }}
-                @endif
-            </td>
+
             <td>
 
                   <form action="/dashboard/order/{{ $order->id }}" method="post" class="d-inline">

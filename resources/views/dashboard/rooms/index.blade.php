@@ -32,11 +32,11 @@
            
               <td>
               @if($room->total == 0)
-                {{ "kosong" }}
-             @elseif($room->total < 10 )
+                {{ "Penuh!" }}
+             @elseif($room->total >= 1 && $room->total<= 5)
                 {{" hampir penuh" }}
              @else
-                {{ "penuh" }}
+                {{ "Tersedia" }}
             @endif          
             
             </td>
@@ -46,7 +46,7 @@
                  <a href="/rooms/{{ $room->slug }}" type="button" class ="text-reset"  > <button class="btn btn-dark btn-sm rounded-0"><small>view</small></button></a>
                    
                     
-                  <i class="bi bi-three-dots-vertical" class=" dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"">  </i>
+                  <i class="bi bi-three-dots-vertical" class=" dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">  </i>
                   
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="/dashboard/rooms/{{$room->id}}/edit">Edit</a></li>
