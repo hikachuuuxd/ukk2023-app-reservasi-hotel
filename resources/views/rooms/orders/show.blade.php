@@ -85,15 +85,15 @@
                               @include('rooms.orders.edit')
 
                            
-                        <button type="button" class="btn btn-danger rounded-0 bi bi-x-circle" onclick="return confirm('yakin?')"> 
-                                
+                        
+                        <div>                                
                                 <form action="/orders/{{ $order->id }}" method="post" class="d-inline">
                                         @method('delete')
                                         @csrf
-                                Batalkan
-                        </form>
-                        </button>
-                              
+                                        <button class="btn btn-danger rounded-0 bi bi-x-circle" onclick="return confirm('yakin?')"> Batalkan</button>
+                                </form>
+                                </div>
+                                                
 
                                 
                         </div>
