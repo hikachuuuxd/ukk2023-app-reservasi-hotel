@@ -20,9 +20,9 @@
 
 
 
-    <!-- <footer class="bg-dark text-white text-center p-3  w-100 position-static bottom-0  " >
-        <small><i class="bi bi-c-circle"> </i> copyright 2023 | build by Hikari Mizu</small>
-    </footer> -->
+    <footer class="bg-transparent text-dark text-center   w-100 position-absolute bottom-0 end-0" >
+        <small><i class="bi bi-c-circle "> </i> copyright 2023 | build by Hikari Mizu</small>
+    </footer> 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>

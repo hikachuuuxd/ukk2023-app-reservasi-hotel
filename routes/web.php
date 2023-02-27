@@ -12,6 +12,7 @@ use App\Http\Controllers\DashboardOrderStatusController;
 use App\Http\Controllers\DashboardHotelController;
 use App\Http\Controllers\CetakController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HotelController;
 
 
 
@@ -39,6 +40,7 @@ Route::resource('dashboard/orders', DashboardOrderController::class)->except('sh
 Route::resource('dashboard/order', DashboardOrderStatusController::class)->only(['update'])->middleware('admin');
 Route::resource('dashboard/hotels', DashboardHotelController::class)->middleware('admin');
 Route::get('/cetak/{order}', [CetakController::class, 'cetak']);
+Route::get('/fasilitas', [HotelController::class, 'index']);
 
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
