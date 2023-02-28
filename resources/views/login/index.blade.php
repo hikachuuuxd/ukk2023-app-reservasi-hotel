@@ -40,6 +40,16 @@ $_SESSION['answer'] = $answer;
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
+
+        @if(session()->has('batas') )
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('batas') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+
+
+     
         
         <main class="form-signin w-100 m-auto">
   <form action="/login" method="post">

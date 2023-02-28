@@ -7,6 +7,11 @@ use App\Models\User;
 
 class LoginController extends Controller
 {
+
+    
+    protected $maxAttempts = 3; // default is 5
+    protected $decayMinutes = 2; // default is 1
+    
     public function index(){
         return view('login.index', [
             'title' => "Halaman Login",
@@ -15,6 +20,7 @@ class LoginController extends Controller
     }
 
     public function authenticate(Request $request){
+
     
         $credentials = $request->validate([
             'email' => 'required|email',
@@ -25,12 +31,13 @@ class LoginController extends Controller
         $answer = $_SESSION['answer'];
         $user_answer = $_POST['answer'];
 
-         if(  $answer == $user_answer && Auth::attempt($credentials)){
+         if( $answer == $user_answer && Auth::attempt($credentials) ){
             $request->session()->regenerate();
             return redirect()->intended('/');
-        }
-        return back()->with('loginError', 'Login Gagal ');
+        }return back()->with('loginError', 'Login Gagal ');
+        return back()->with('batas', 'Login dibatasi 3x ');
 
+       
     }
 
     public function logout(Request $request){
