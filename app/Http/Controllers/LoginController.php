@@ -15,18 +15,20 @@ class LoginController extends Controller
     }
 
     public function authenticate(Request $request){
+    
         $credentials = $request->validate([
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
-         if( Auth::attempt($credentials) ){
+        session_start();
+        $answer = $_SESSION['answer'];
+        $user_answer = $_POST['answer'];
+
+         if(  $answer == $user_answer && Auth::attempt($credentials)){
             $request->session()->regenerate();
             return redirect()->intended('/');
         }
-
-        
-
         return back()->with('loginError', 'Login Gagal ');
 
     }

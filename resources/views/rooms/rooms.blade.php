@@ -18,7 +18,7 @@
     <div class="col-md-4 mb-5  ">
 
       
-      <div class="card rounded-0   " style="width: 50;">
+      <div class="card rounded-0  " style="width: 50;">
       <a href="/rooms/{{ $room->slug }}" class ="text-decoration-none">
     
         <img src="{{ asset('storage/'. $room->image) }}" class="card-img-top rounded-0" style="height:250px"alt="...">

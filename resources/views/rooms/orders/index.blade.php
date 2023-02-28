@@ -16,7 +16,7 @@
 
         @foreach($orders as $order)
         @if( auth()->user()->name == $order->user->name)
-        <div class="col mb-4 text-center ">
+        <div class="col-md-4  mb-4 text-center ">
 
                 <div class="card  overflow-hidden rounded-0">
                         <img src="{{ asset('storage/' .$order->room->image) }}" class="card-img-top rounded-0" style="height:250px" alt="">

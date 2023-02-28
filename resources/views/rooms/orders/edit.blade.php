@@ -1,9 +1,9 @@
 <!-- Button trigger modal -->
 <a type="button" class="" data-bs-toggle="modal" data-bs-target="#view{{$order->id}}">
     @if($order->status == 1)
-        <button type="button" class="btn btn-dark rounded-0 bi bi-pencil-square"> Edit</button></a>
+        <button type="button" class="btn btn-dark rounded-0 bi bi-pencil-square d-none"> Edit</button></a>
     @elseif($order->status == 2)
-        <button type="button" class="btn btn-dark rounded-0 bi bi-pencil-square"> Edit</button></a>
+        <button type="button" class="btn btn-dark rounded-0 bi bi-pencil-square d-none"> Edit</button></a>
     @else
          <button type="button" class="btn btn-dark rounded-0 bi bi-pencil-square"> Edit</button></a>
     @endif
