@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-dark ">
+<nav class="navbar  navbar-expand-lg navbar-dark " style="background-color: rgb(46, 68, 105)">
     <div class="container">
       <a class="navbar-brand mt-2" href="#">HOTEL HEBAT</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
