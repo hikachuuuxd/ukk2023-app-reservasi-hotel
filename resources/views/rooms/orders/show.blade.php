@@ -67,6 +67,8 @@
                                       <small>
                                       @if($order->status === 1)
                                         {{ "Pesanan telah dikonfirmasi" }}
+                                        @elseif($order->status === 2)
+                                        {{ "Berhasil Checkout" }}
                                         @else
                                         {{ "Pesanan Belum dibayar" }}
                                         @endif
