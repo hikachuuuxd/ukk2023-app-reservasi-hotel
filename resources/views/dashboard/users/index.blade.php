@@ -47,12 +47,12 @@
                
 
                  <div class="dropdown">
-                    <p class="d-none">
-                        @include('dashboard.users.edit')  
-                       </p>
+          
                   <i class="bi bi-three-dots" class=" dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">  </i>     
-                    <ul class="dropdown-menu">
-                      @include('dashboard.users.edit')                 
+                  <p class="d-none"> @include('dashboard.users.edit') </p>
+                    <ul class="dropdown-menu ">
+                    <li> @include('dashboard.users.edit') </li>          
+                     <li>
                       <form action="/dashboard/users/{{ $user->id }}" method="post" class="d-inline">
                       @method('delete')
                       @csrf

@@ -27,7 +27,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="pesan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Form Pemesanan Kamar</h1>
@@ -37,67 +37,53 @@
 
       <form action="/orders" method="POST" >
         @csrf
-            <div class="mb-3">
-                <label for="Checkin" class="form-label ">Tanggal Check-in</label>
-                <input type="date" class="form-control @error('Checkin')is-invalid @enderror" id="Checkin"  name= "Checkin" value="{{ old('Checkin') }}">
 
-                @error('Checkin')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-               
+        <div class="row">
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control @error('Checkin')is-invalid @enderror rounded-0" id="Checkin"  name= "Checkin" value="{{ old('Checkin') }}" placeholder="Tanggal Check-in">
+                    <label for="Checkin" class="form-label ">Tanggal Check-in</label>
+                    @error('Checkin')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                   
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="Checkout" class="form-label">Tanggal Check-out</label>
-                <input type="date" class="form-control @error('Checkout')is-invalid @enderror" id="Checkout"  name="Checkout" value="{{ old('Checkout') }}">
+            <div class="col">
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control @error('Checkout')is-invalid @enderror rounded-0" id="Checkout "  name="Checkout" value="{{ old('Checkout') }}" placeholder="Tanggal Check-out">
+                    <label for="Checkout" class="form-label">Tanggal Check-out</label>
+                    @error('Checkout')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                   
+                </div>
+            </div>
+        </div>
 
-                @error('Checkout')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-               
-            </div>
-            <div class="mb-3">
+
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control @error('totalRoom')is-invalid @enderror rounded-0" id="totalRoom"  name="totalRoom" value="{{ old('totalRoom') }}" placeholder="Jumlah Kamar">
                 <label for="totalRoom" class="form-label">Jumlah Kamar</label>
-                <input type="number" class="form-control @error('totalRoom')is-invalid @enderror" id="totalRoom"  name="totalRoom" value="{{ old('totalRoom') }}">
-
                 @error('totalRoom')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
                 @enderror
             </div>
-            <div class="mb-3">
-                <label for="kamar" class="form-label">Tipe Kamar</label>
+            <div class="form-floating mb-3">
                
-                <select class=" form-select"  aria-label="Default select example" name= "room_id">
+                <select class=" form-select rounded-0"  aria-label="Default select example" name= "room_id" placeholder="Tipe Kamar">
                     <option value="{{ $room->id }}">{{$room->name}}</option>
                 </select>
               
-        
+                <label for="kamar" class="form-label">Tipe Kamar</label>
             </div>
-            <!-- <div class="mb-3">
-                <label for="totalPrice" class="form-label">Total Harga</label>
-                <input type="number" class="form-control @error('totalPrice')is-invalid @enderror" id="totalPrice" name="totalPrice" value="{{ old('totalRoom') }}" readonly>
-
-                @error('totalPrice')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div> -->
-            <!-- <div class="mb-3">
-                <label for="name" class="form-label">Tipe Kamar</label>
-                <input type="text" class="form-control @error('name')is-invalid @enderror " id="name" name="room_id" value="{{ $room->id }}"> </input> 
-
-                @error('name')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div> -->
+   
 
        
       </div>

@@ -1,6 +1,6 @@
 <!-- Button trigger modal -->
 <a type="button" class="" data-bs-toggle="modal" data-bs-target="#view{{$user->id}}">
-    <button class="dropdown-item" >Edit</span></button>
+  <button class="dropdown-item " >Edit</button>
     </a>
     
     <!-- Modal -->
