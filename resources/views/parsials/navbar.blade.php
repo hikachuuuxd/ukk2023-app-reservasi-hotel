@@ -25,7 +25,7 @@
                   @endauth
                 </a>
                
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu" style="background-color: rgb(46, 68, 105)">
                       <li><a href=" /" class="dropdown-item text-white link-dark ">Home</a></li>
                       @can('admin') <li><a class="dropdown-item text-white link-dark" href="/dashboard">Dashboard</a></li> 
                       @elsecan('reservasi') <li><a class="dropdown-item text-white link-dark" href="/dashboard">Dashboard</a></li> 
