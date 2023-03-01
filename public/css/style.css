@@ -52,6 +52,14 @@ a .button-me{
   color: white;
 }
 
+.button-login{
+  background-color: rgb(46, 68, 105);
+  color:white ;
+}
+.button-login:hover{
+  background-color: transparent;
+  color: rgb(46, 68, 105);
+}
 a .button-me:hover{
   background-color: rgb(255, 166, 52);
   color: rgb(37, 37, 37);
