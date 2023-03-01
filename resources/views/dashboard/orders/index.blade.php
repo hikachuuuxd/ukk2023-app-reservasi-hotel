@@ -92,11 +92,11 @@
                       @endif
                       </select>
                       @if($order->status=== 1)
-                      <button type="submit"class="badge text-warning-emphasis bg-transparent border border-warning p-1 w-100 fw-semibold" id="konfirmasi">Check-out</button>
+                      <button type="submit"class="badge rounded-pill text-bg-warning border border-warning p-1 w-100 fw-semibold" id="konfirmasi">Check-out</button>
                       @elseif($order->status === 2)
-                      <button disabled="disabled" class="badge text-success-emphasis bg-transparent border border-success p-1 w-100 fw-semibold" id="konfirmasi">Done</button>
+                      <button disabled="disabled" class="badge rounded-pill text-bg-success border border-success p-1 w-100 fw-semibold" id="konfirmasi">Done</button>
                       @else
-                      <button type="submit"class="badge text-danger-emphasis bg-transparent border border-danger p-1 w-100 fw-semibold" id="konfirmasi">konfirmasi</button>
+                      <button type="submit"class="badge rounded-pill text-bg-danger border border-danger p-1 w-100 fw-semibold" id="konfirmasi">konfirmasi</button>
                       @endif
 
                     </form>
