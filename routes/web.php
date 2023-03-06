@@ -36,8 +36,8 @@ Route::get('/rooms', [RoomController::class, 'index'])->middleware('auth');
 Route::get('/rooms/{room:slug}', [RoomController::class, 'show'])->middleware('auth');
 Route::resource('/orders', OrderController::class)->middleware('auth');
 Route::get('/orders/cetak/{order}', [OrderController::class, 'cetak'])->middleware('auth');
-Route::resource('dashboard/orders', DashboardOrderController::class)->except('show')->middleware('reservasi', 'admin');
-Route::resource('dashboard/order', DashboardOrderStatusController::class)->only(['update'])->middleware('admin');
+Route::resource('dashboard/orders', DashboardOrderController::class)->except('show')->middleware('reservasi');
+Route::resource('dashboard/order', DashboardOrderStatusController::class)->only(['update'])->middleware('reservasi');
 Route::resource('dashboard/hotels', DashboardHotelController::class)->middleware('admin');
 Route::get('/cetak/{order}', [CetakController::class, 'cetak']);
 Route::get('/fasilitas', [HotelController::class, 'index']);
@@ -54,7 +54,7 @@ Route::get('/dashboard', function(){
     return view('dashboard.index',[
         'title' => 'dashboard'
     ]);
-})->middleware('reservasi', 'admin');
+})->middleware('reservasi');
 
 Route::get('/dashboard/rooms/checkSlug', [DashboardRoomController::class, 'checkSlug'])->middleware('admin');
 Route::resource('/dashboard/rooms', DashboardRoomController::class)->except('show')->middleware('admin');
@@ -63,3 +63,4 @@ Route::resource('/dashboard/fasilities', DashboardFasilityController::class)->ex
 Route::resource('/dashboard/users', UserController::class)->except('show')->middleware('admin');
 
 
+?>
