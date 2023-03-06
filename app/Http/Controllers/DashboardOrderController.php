@@ -40,7 +40,9 @@ class DashboardOrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   if( auth()->user()->role == 1){
+        abort(403);
+    }
         return view('dashboard.orders.create',[
             'rooms' => Room::all(),
             'users' => User::all()
@@ -55,6 +57,7 @@ class DashboardOrderController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'room_id' => 'required',
             'user_id' => 'required',
@@ -94,6 +97,9 @@ class DashboardOrderController extends Controller
      */
     public function edit(Order $order)
     {
+        if( auth()->user()->role == 1){
+            abort(403);
+        }
         return view('dashboard.orders.edit', [
             'rooms' => Room::all(),
             'users' => User::all(),
@@ -135,7 +141,11 @@ class DashboardOrderController extends Controller
      */
     public function destroy(Order $order)
     {
+       
         $order = Order::find($order->id);
+        if( auth()->user()->role == 1){
+            abort(403);
+        }
         $order->delete();
         return redirect('dashboard/orders')->with('success', 'New Order has been delete!');
     }

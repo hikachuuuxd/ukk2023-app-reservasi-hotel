@@ -77,8 +77,6 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         
-        
-        
        Order::findOrFail($order->id);
       if( auth()->user()->name !== $order->user->name){
         abort(403);
