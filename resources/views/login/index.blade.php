@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('login.main')
 @section('container')
 <div class="container mt-5">
   <?php
@@ -23,9 +23,10 @@ switch($operator){
 
 $_SESSION['answer'] = $answer;
 ?>
+<div class="container ">
 
     <div class="row justify-content-center ">
-        <div class="col-md-6 p-2">
+        <div class="col-lg-4">
 
         @if(session()->has('success') )
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -51,7 +52,7 @@ $_SESSION['answer'] = $answer;
 
      
         
-        <main class="form-signin w-100 m-auto   p-5">
+        <main class="form-signin w-100 m-auto mt-5 bg-light p-5 shadow p-3 mb-5 bg-body rounded">
   <form action="/login" method="post">
     @csrf
     <h4 class=" mb-4  fw-normal text-center text-dark " style="letter-spacing: 3px">LOGIN
@@ -59,8 +60,8 @@ $_SESSION['answer'] = $answer;
     <hr class="w-50 d-none mx-auto mb-5">
    
 
-    <div class="form-floating mt-5">
-      <input type="email" name="email" class="form-control mb-2 @error('email')is-invalid  @enderror  rounded-0 border-0 border-bottom  bg-transparent border-dark text-dark" id="email" placeholder="name@example.com" autofocus required >
+    <div class="form-floating mt-3">
+      <input type="email" name="email" class="form-control mb-1 @error('email')is-invalid  @enderror  rounded-0 border-0 border-bottom  bg-transparent border-dark text-dark" id="email" placeholder="name@example.com" autofocus required >
       <label for="email" class="text-dark">Email address</label>
 
       @error('email')
@@ -69,12 +70,12 @@ $_SESSION['answer'] = $answer;
       </div>
       @enderror
     </div>
-    <div class="form-floating mt-5">
-      <input type="password" name="password" class="form-control mb-2 rounded-0 border-0 border-bottom  bg-transparent border-dark text-dark" id="password" placeholder="Password" required>
+    <div class="form-floating mt-3">
+      <input type="password" name="password" class="form-control mb-1 rounded-0 border-0 border-bottom  bg-transparent border-dark text-dark" id="password" placeholder="Password" required>
       <label for="password"class="text-dark" >Password</label>
     </div>
 
-      <div class="row mt-5 mb-5">
+      <div class="row mt-3 mb-5">
         <div class="col">
           <div class=" d-block w-100 h-100 border text-center rounded-0 border-0 ">
             <p class="mt-3 fw-semibold fs-3 text-dark"><?php echo $first_num . " " . $operator . " " . $second_num ?></p>
@@ -82,7 +83,7 @@ $_SESSION['answer'] = $answer;
         </div>
         <div class="col">
           <div class="form-floating">
-            <input type="number" name="answer" id="answer" class="form-control mb-2 rounded-0 border-0 border-bottom  bg-transparent border-dark  text-dark" id="cap" placeholder="captcha" >
+            <input type="number" name="answer" id="answer" class="form-control mb-1 rounded-0 border-0 border-bottom  bg-transparent border-dark  text-dark" id="cap" placeholder="captcha" >
             <label for="captcha" class="text-dark">Captcha</label>
           </div>
         </div>
@@ -91,11 +92,12 @@ $_SESSION['answer'] = $answer;
    
 
 
-    <button class="w-100 d-block ms-auto  btn btn-lg  rounded-0  border-dark button-login" style="margin-top:100px"type="submit">Masuk</button>
-    <small class="d-block text-end mt-3 text-dark">Not register? <a href="/register" class="text-decoration-none text-black">Register Now!  </a></small>
+    <button class="w-100 d-block ms-auto w-100 btn btn-lg mt-2   border-dark button-login" style="margin-top:50px"type="submit">Masuk</button>
+    <small class="d-block text-end mt-1 text-dark">Not register? <a href="/register" class="text-decoration-none text-black">Register Now!  </a></small>
   </form>
 </main>
         </div>
     </div>
+</div>
 </div>
 @endsection
