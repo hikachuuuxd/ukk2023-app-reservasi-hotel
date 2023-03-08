@@ -37,6 +37,7 @@ Route::get('/rooms/{room:slug}', [RoomController::class, 'show'])->middleware('a
 Route::resource('/orders', OrderController::class)->middleware('auth');
 Route::get('/orders/cetak/{order}', [OrderController::class, 'cetak'])->middleware('auth');
 Route::resource('dashboard/orders', DashboardOrderController::class)->except('show')->middleware('reservasi');
+Route::get('/dashboard/orders_history', [DashboardOrderController::class, 'history'])->middleware('reservasi');
 Route::resource('dashboard/order', DashboardOrderStatusController::class)->only(['update'])->middleware('reservasi');
 Route::resource('dashboard/hotels', DashboardHotelController::class)->middleware('admin');
 Route::get('/cetak/{order}', [CetakController::class, 'cetak']);

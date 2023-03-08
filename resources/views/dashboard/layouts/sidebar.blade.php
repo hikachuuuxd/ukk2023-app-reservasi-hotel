@@ -29,6 +29,12 @@
               Pemesanan
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('dashboard/orders_history')? 'active' : '' }} text-white link-dark" href="/dashboard/orders_history">
+              <span data-feather="file" class="align-text-bottom text-white"></span>
+              Pemesanan Selesai
+            </a>
+          </li>
           @can('admin')
           <li class="nav-item">
             <a class="nav-link {{ Request::is('dashboard/hotels*')? 'active' : '' }} text-white link-dark" href="/dashboard/hotels">

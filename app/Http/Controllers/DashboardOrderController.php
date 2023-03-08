@@ -7,7 +7,7 @@ use App\Models\Room;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-
+use Illuminate\Support\Facades\DB;
 class DashboardOrderController extends Controller
 {
     /**
@@ -15,6 +15,24 @@ class DashboardOrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function history(Request $request, Order $order){
+        if(request('search')){
+            $orders->join('users', 'orders.user_id', '=', 'users.id')
+                ->join('rooms', 'orders.room_id', '=', 'rooms.id')
+                ->select('orders.*','users.name', 'rooms.name')
+                ->where('Checkin','LIKE','%' .request('search'). '%' )
+                ->orWhere('Checkout','LIKE','%' .request('search'). '%' )
+                ->orWhere('status','LIKE','%' .request('search'). '%' )
+                ->orWhere('users.name','LIKE','%' .request('search'). '%' )
+                ->orWhere('rooms.name','LIKE','%' .request('search'). '%' );
+        }
+        $orders = Order::where('status', '=', 2);
+                                   
+        return view('dashboard.orders.history', [
+          'orders'=> $orders->get()
+        ]);
+     }
     public function index(Request $request, Order $order)
     {
         $orders = Order::latest();
